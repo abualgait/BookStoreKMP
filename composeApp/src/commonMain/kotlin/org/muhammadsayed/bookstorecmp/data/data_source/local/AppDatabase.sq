@@ -1,0 +1,32 @@
+CREATE TABLE BookEntity(
+id INTEGER PRIMARY KEY NOT NULL,
+title TEXT NOT NULL,
+subtitle TEXT NOT NULL,
+description TEXT NOT NULL,
+author TEXT NOT NULL,
+type TEXT NOT NULL,
+qty INTEGER DEFAULT 1,
+price TEXT DEFAULT NULL,
+createdAt TEXT NOT NULL,
+image TEXT NOT NULL
+);
+
+insertOrUpdateBook:
+INSERT OR REPLACE INTO BookEntity(id,title,subtitle,description,author,type,qty,price,createdAt,image)
+VALUES ( ?,?,?,?,?,?,?,?,?,?);
+
+getAllBooks:
+SELECT * FROM BookEntity
+ORDER BY id DESC;
+
+getBook:
+SELECT * FROM BookEntity
+WHERE id=?;
+
+deleteBook:
+DELETE FROM BookEntity
+WHERE id=?;
+
+deleteAllBooks:
+DELETE FROM BookEntity;
+
