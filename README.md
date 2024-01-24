@@ -7,7 +7,7 @@
 
 
 
-Welcome to the BookStoreKMP repository! This cross-platform project showcases the integration of cutting-edge technologies and demonstrates a sleek UI design using Jetpack Compose for Android, Ktor for network communication, SqlDelight for database persistence, and Koin for dependency injection.
+Welcome to the BookStoreKMP repository! This kotlin-platform project showcases the integration of cutting-edge technologies and demonstrates a sleek UI design using Jetpack Compose for Android, Ktor for network communication, SqlDelight for database persistence, and Koin for dependency injection.
 
 ## Features ✨
 
