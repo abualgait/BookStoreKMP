@@ -1,3 +1,6 @@
+![BookStore](https://github.com/abualgait/BookStoreKMP/assets/38107393/3d2a167f-ceca-4628-9811-8a5c763d41b4)
+
+
 # BookStoreKMP 
 
 ## Overview 🚀
@@ -18,6 +21,10 @@ Welcome to the BookStoreKMP repository! This cross-platform project showcases th
 - 🚀 **PreCompose (Navigation)**
 - 🚀 **Image Loader**
   
+
+## API & Design File:
+- Design: https://www.figma.com/community/file/1187676718154727707/bookstore-app
+- API: https://openlibrary.org/developers/api
 
 ## Connect with Me 🌐
 
