@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
-import org.muhammadsayed.bookstorecmp.domain.use_case.AddBook
+import org.muhammadsayed.bookstorecmp.domain.DataState
 import org.muhammadsayed.bookstorecmp.domain.use_case.GetAlreadyRead
 import org.muhammadsayed.bookstorecmp.domain.use_case.GetCurrentlyReading
 
@@ -47,16 +47,22 @@ class HomeViewModel constructor(
     private suspend fun getCurrentlyReadingData() {
         getCurrentlyReading()
             .onEach { data ->
-                _state.update { it.copy(loading = true) }
-                if (data.data != null) {
-                    withContext(Dispatchers.Main) {
-                        _state.update { it.copy(loading = false) }
-                        _state.update { it.copy(currentlyReading = data.data) }
+                when (data) {
+                    DataState.Loading -> {
+                        _state.update { it.copy(loading = true) }
                     }
-                }
-                if (data.error != null) {
-                    _state.update { it.copy(loading = false) }
-                    _state.update { it.copy(error = data.error) }
+
+                    is DataState.Success -> {
+                        withContext(Dispatchers.Main) {
+                            _state.update { it.copy(loading = false) }
+                            _state.update { it.copy(currentlyReading = data.data) }
+                        }
+                    }
+
+                    is DataState.Error -> {
+                        _state.update { it.copy(loading = false) }
+                        _state.update { it.copy(error = data.error) }
+                    }
                 }
             }.launchIn(viewModelScope)
 
@@ -66,19 +72,18 @@ class HomeViewModel constructor(
     private suspend fun getAlreadyReadData() {
         getAlreadyRead()
             .onEach { data ->
-                _state.update { it.copy(alreadyReadLoading = true) }
-                if (data.data != null) {
-                    withContext(Dispatchers.Main) {
+                when(data) {
+                    DataState.Loading -> _state.update { it.copy(alreadyReadLoading = true) }
+
+                    is DataState.Success -> withContext(Dispatchers.Main) {
                         _state.update { it.copy(alreadyReadLoading = false) }
                         _state.update { it.copy(alreadyRead = data.data) }
                     }
+                    is DataState.Error -> {
+                        _state.update { it.copy(alreadyReadLoading = false) }
+                        _state.update { it.copy(error = data.error) }
+                    }
                 }
-                if (data.error != null) {
-                    _state.update { it.copy(alreadyReadLoading = false) }
-                    _state.update { it.copy(error = data.error) }
-                }
-
-
             }.launchIn(viewModelScope)
     }
 }

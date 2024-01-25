@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
+import org.muhammadsayed.bookstorecmp.domain.DataState
 import org.muhammadsayed.bookstorecmp.domain.use_case.AddBook
 import org.muhammadsayed.bookstorecmp.domain.use_case.GetBookDetails
 
@@ -48,16 +49,15 @@ class DetailsViewModel constructor(
     private suspend fun getCurrentlyReadingData(bookId: String) {
         getBookDetails(bookId)
             .onEach { data ->
-                _state.value = DetailsScreenState.Loading
-                if (data.data != null) {
-                    withContext(Dispatchers.Main) {
+                when (data) {
+                    DataState.Loading -> _state.value = DetailsScreenState.Loading
+
+                    is DataState.Success -> withContext(Dispatchers.Main) {
                         _state.value = DetailsScreenState.Success.BookDetails(data.data)
                     }
-                }
-                if (data.error != null) {
-                    _state.value = DetailsScreenState.Error(data.error)
+
+                    is DataState.Error -> _state.value = DetailsScreenState.Error(data.error)
                 }
             }.launchIn(viewModelScope)
-
     }
 }
