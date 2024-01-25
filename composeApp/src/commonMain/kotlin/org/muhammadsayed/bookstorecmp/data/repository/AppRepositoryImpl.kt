@@ -42,47 +42,47 @@ class AppRepositoryImpl(
     override fun getSearchResults(query: String): Flow<DataState<List<BookSearchDomainModel>>> =
         flow {
             try {
-                emit(DataState.loading())
+                emit(DataState.Loading)
                 val response = httpClient.get("search.json") {
                     parameter("q", query)
 
                 }.body<BookSearchResultsResponse>()
-                emit(DataState.success(response.docs.fromDTOList()))
+                emit(DataState.Success(response.docs.fromDTOList()))
             } catch (e: Exception) {
-                emit(DataState.error(e.message ?: "Unknown error"))
+                emit(DataState.Error(e.message ?: "Unknown error"))
             }
         }
 
     override suspend fun getCurrentlyReadingBooks(): Flow<DataState<List<BookDomainModel>>> = flow {
         try {
-            emit(DataState.loading())
+            emit(DataState.Loading)
             val response = httpClient.get("people/mekBot/books/currently-reading.json")
                 .body<ReadingEnteriesResponse>()
-            emit(DataState.success(response.readingLogEntries.fromDTOList()))
+            emit(DataState.Success(response.readingLogEntries.fromDTOList()))
         } catch (e: Exception) {
-            emit(DataState.error(e.message ?: "Unknown error"))
+            emit(DataState.Error(e.message ?: "Unknown error"))
         }
     }
 
     override suspend fun getAlreadyReadBooks(): Flow<DataState<List<BookDomainModel>>> = flow {
         try {
-            emit(DataState.loading())
+            emit(DataState.Loading)
             val response = httpClient.get("people/mekBot/books/already-read.json")
                 .body<ReadingEnteriesResponse>()
-            emit(DataState.success(response.readingLogEntries.fromDTOList()))
+            emit(DataState.Success(response.readingLogEntries.fromDTOList()))
         } catch (e: Exception) {
-            emit(DataState.error(e.message ?: "Unknown error"))
+            emit(DataState.Error(e.message ?: "Unknown error"))
         }
     }
 
     override suspend fun getBookDetails(key: String): Flow<DataState<BookDetailsData>> = flow {
         try {
-            emit(DataState.loading())
+            emit(DataState.Loading)
             val response = httpClient.get("works/${key}.json")
                 .body<BookDetailsData>()
-            emit(DataState.success(response))
+            emit(DataState.Success(response))
         } catch (e: Exception) {
-            emit(DataState.error(e.message ?: "Unknown error"))
+            emit(DataState.Error(e.message ?: "Unknown error"))
         }
     }
 
