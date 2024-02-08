@@ -1,6 +1,5 @@
 package org.muhammadsayed.bookstorecmp.presentation.navigation
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.Navigator
@@ -14,12 +13,13 @@ import org.muhammadsayed.bookstorecmp.presentation.home.HomeScreen
 @Composable
 fun Navigation(
     navigator: Navigator,
-    paddingValues: PaddingValues = PaddingValues()
+    onLocalChange: (String) -> Unit
 ) {
     NavHost(navigator = navigator, initialRoute = NavigationItem.GetStarted.route) {
         scene(NavigationItem.GetStarted.route) {
             GetStartedScreen(
-                navigator = navigator
+                navigator = navigator,
+                onLocalChange = onLocalChange
             )
         }
         scene(NavigationItem.Home.route) {

@@ -36,6 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cafe.adriel.lyricist.LocalStrings
 import com.seiko.imageloader.rememberImagePainter
 import moe.tlaster.precompose.navigation.Navigator
 import org.jetbrains.compose.resources.ExperimentalResourceApi
@@ -75,7 +76,7 @@ fun CartScreen(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = "Cart",
+                        text = LocalStrings.current.cart,
                         style = TextStyle(
                             fontSize = 16.sp,
                             lineHeight = 32.sp,
@@ -99,7 +100,7 @@ fun CartScreen(
                 item {
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
-                        text = "Order Summary",
+                        text = LocalStrings.current.orderSummary,
                         style = TextStyle(
                             fontSize = 20.sp,
 
@@ -113,7 +114,7 @@ fun CartScreen(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = "Subtotal",
+                            text = LocalStrings.current.seeMore,
                             style = TextStyle(
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight(400),
@@ -135,7 +136,7 @@ fun CartScreen(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = "Shipping",
+                            text = LocalStrings.current.shipping,
                             style = TextStyle(
                                 fontSize = 16.sp,
 
@@ -166,7 +167,7 @@ fun CartScreen(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = "Total",
+                            text = LocalStrings.current.total,
                             style = TextStyle(
                                 fontSize = 20.sp,
                                 fontWeight = FontWeight(400),
@@ -196,7 +197,7 @@ fun CartScreen(
                             }, contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = "Proceed to Checkout",
+                            text = LocalStrings.current.proceedToCheckout,
                             style = TextStyle(
                                 fontSize = 14.sp,
                                 lineHeight = 22.sp,

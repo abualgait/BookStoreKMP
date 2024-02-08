@@ -43,11 +43,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import cafe.adriel.lyricist.LocalStrings
 import com.seiko.imageloader.rememberImagePainter
 import moe.tlaster.precompose.navigation.Navigator
 import org.koin.compose.koinInject
 import org.muhammadsayed.bookstorecmp.domain.model.BookDomainModel
-import org.muhammadsayed.bookstorecmp.presentation.components.shimmerBackground
 
 @Composable
 fun HomeScreen(
@@ -72,7 +72,7 @@ fun HomeScreen(
                         modifier = Modifier.fillMaxWidth().padding(16.dp)
                     ) {
                         Text(
-                            text = "Happy Reading!",
+                            text =  LocalStrings.current.happyReading,
                             style = TextStyle(
                                 fontSize = 16.sp,
                                 lineHeight = 32.sp,
@@ -106,7 +106,7 @@ fun HomeScreen(
                     item {
                         Text(
                             modifier = Modifier.padding(16.dp),
-                            text = "Best Deals",
+                            text = LocalStrings.current.bestDeals,
                             fontWeight = FontWeight.Bold,
                             style = MaterialTheme.typography.titleLarge
                         )
@@ -129,7 +129,7 @@ fun HomeScreen(
                         modifier = Modifier.fillMaxWidth().padding(16.dp)
                     ) {
                         Text(
-                            text = "Top Books",
+                            text = LocalStrings.current.topBooks,
                             style = TextStyle(
                                 fontSize = 20.sp,
                                 lineHeight = 20.sp,
@@ -140,7 +140,7 @@ fun HomeScreen(
                             )
                         )
                         Text(
-                            text = "see more",
+                            text =LocalStrings.current.seeMore,
                             style = TextStyle(
                                 fontSize = 14.sp,
                                 lineHeight = 20.sp,

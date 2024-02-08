@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.kotlinX.serialization.plugin)
     alias(libs.plugins.sqlDelight)
+    alias(libs.plugins.ksp)
 }
 
 kotlin {
@@ -59,6 +60,7 @@ kotlin {
             implementation(libs.imageLoader)
             api(libs.preCompose)
             api(libs.preCompose.viewmodel)
+            api(libs.lyricist)
             implementation(libs.sqlDelight.coroutine)
         }
 
@@ -115,4 +117,15 @@ sqldelight {
             srcDirs.setFrom("src/commonMain/kotlin")
         }
     }
+}
+dependencies { add("kspCommonMainMetadata", libs.lyricist.processor) }
+
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().all {
+    if(name != "kspCommonMainKotlinMetadata") {
+        dependsOn("kspCommonMainKotlinMetadata")
+    }
+}
+
+kotlin.sourceSets.commonMain {
+    kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
 }
