@@ -62,6 +62,7 @@ kotlin {
             api(libs.preCompose.viewmodel)
             api(libs.lyricist)
             implementation(libs.sqlDelight.coroutine)
+            implementation(libs.multiplatform.settings)
         }
 
         iosMain.dependencies {

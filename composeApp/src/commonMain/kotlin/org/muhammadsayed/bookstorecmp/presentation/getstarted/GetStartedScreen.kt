@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,15 +30,19 @@ import cafe.adriel.lyricist.LocalStrings
 import moe.tlaster.precompose.navigation.Navigator
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+import org.koin.compose.koinInject
 import org.muhammadsayed.bookstorecmp.presentation.navigation.NavigationItem
+import org.muhammadsayed.bookstorecmp.presentation.settings.SettingsViewModel
 import org.muhammadsayed.bookstorecmp.strings.Locales
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun GetStartedScreen(
     navigator: Navigator,
+    viewModel: SettingsViewModel = koinInject(),
     onLocalChange: (String) -> Unit
 ) {
+
     Scaffold {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -75,6 +78,7 @@ fun GetStartedScreen(
                         .background(
                             color = Color(0xFF121212), shape = RoundedCornerShape(size = 5.dp)
                         ).clickable {
+                            viewModel.savePreferenceGetStarted()
                             navigator.navigate(NavigationItem.Home.route)
                         }, contentAlignment = Alignment.Center
                 ) {
@@ -90,9 +94,11 @@ fun GetStartedScreen(
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
-                Row (modifier = Modifier.padding(
-                    horizontal = 16.dp
-                )){
+                Row(
+                    modifier = Modifier.padding(
+                        horizontal = 16.dp
+                    )
+                ) {
                     Box(
                         modifier = Modifier.weight(1f)
                             .height(56.dp)
