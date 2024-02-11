@@ -33,15 +33,22 @@ class HomeViewModel constructor(
         initialValue = HomeScreenState(),
     )
 
-    private fun onEvent() {
-        viewModelScope.launch {
-            getCurrentlyReadingData()
-            getAlreadyReadData()
-        }
-    }
+    fun onEvent(event: HomeScreenEvents) {
+        when (event) {
+            is HomeScreenEvents.LoadCurrentlyReading -> {
+                viewModelScope.launch {
+                    getCurrentlyReadingData()
+                }
+            }
 
-    init {
-        onEvent()
+            is HomeScreenEvents.LoadAlreadyRead -> {
+                viewModelScope.launch {
+                    getAlreadyReadData()
+                }
+            }
+
+        }
+
     }
 
     private suspend fun getCurrentlyReadingData() {
@@ -72,13 +79,14 @@ class HomeViewModel constructor(
     private suspend fun getAlreadyReadData() {
         getAlreadyRead()
             .onEach { data ->
-                when(data) {
+                when (data) {
                     DataState.Loading -> _state.update { it.copy(alreadyReadLoading = true) }
 
                     is DataState.Success -> withContext(Dispatchers.Main) {
                         _state.update { it.copy(alreadyReadLoading = false) }
                         _state.update { it.copy(alreadyRead = data.data) }
                     }
+
                     is DataState.Error -> {
                         _state.update { it.copy(alreadyReadLoading = false) }
                         _state.update { it.copy(error = data.error) }

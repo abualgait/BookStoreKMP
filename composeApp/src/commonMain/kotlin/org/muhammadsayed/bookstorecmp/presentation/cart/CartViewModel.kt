@@ -56,18 +56,17 @@ class CartViewModel constructor(
         getCartItems.invoke()
             .onEach { data ->
                 withContext(Dispatchers.Main) {
-                    _state.update { it.copy(cartItems = data) }
                     _state.update {
                         var subTotal = 0L
                         it.cartItems?.forEach { book ->
                             subTotal += book.qty?.times(book.price.toInt()) ?: 0L
                         }
-                        it.copy(subTotal = subTotal)
-                    }
 
-                    _state.update {
-
-                        it.copy(total = it.subTotal?.plus(10L))
+                        it.copy(
+                            cartItems = data,
+                            subTotal = subTotal,
+                            total = it.subTotal?.plus(10L)
+                        )
                     }
                 }
             }.launchIn(viewModelScope)

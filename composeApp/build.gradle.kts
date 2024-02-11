@@ -17,7 +17,7 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -28,9 +28,9 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
-        
+
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
@@ -70,6 +70,23 @@ kotlin {
             implementation(libs.sqlDelight.native)
         }
 
+        commonTest {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation(libs.kotest.assertions.core)
+                implementation(libs.turbine)
+                implementation(libs.ktor.mock)
+                implementation(libs.kotlinX.coroutines.test)
+                implementation(libs.multiplatformSettings.test)
+            }
+
+        }
+        val androidUnitTest by getting {
+            dependencies {
+                implementation(libs.sqldelight.driver.sqlite)
+            }
+        }
+
     }
 }
 
@@ -107,6 +124,7 @@ android {
         debugImplementation(libs.compose.ui.tooling)
     }
 }
+
 dependencies {
     implementation(libs.androidx.foundation.android)
 }
@@ -122,7 +140,7 @@ sqldelight {
 dependencies { add("kspCommonMainMetadata", libs.lyricist.processor) }
 
 tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().all {
-    if(name != "kspCommonMainKotlinMetadata") {
+    if (name != "kspCommonMainKotlinMetadata") {
         dependsOn("kspCommonMainKotlinMetadata")
     }
 }

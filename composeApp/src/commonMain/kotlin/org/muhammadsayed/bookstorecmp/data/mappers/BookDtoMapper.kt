@@ -12,7 +12,7 @@ fun BookDTO.mapToDomainModel(): BookDomainModel {
         title = work.title ?: "",
         subtitle = "",
         type = "Novel",
-        price = Random.nextInt(500).toString(),
+        price = "500",
         image = work.coverEditionKey?.getCoverImage() ?: "",
         author = work.authorNames?.joinToString() ?: ""
     )
