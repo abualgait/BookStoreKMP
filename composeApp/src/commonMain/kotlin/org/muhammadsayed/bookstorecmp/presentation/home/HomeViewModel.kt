@@ -21,7 +21,7 @@ class HomeViewModel constructor(
     private val getCurrentlyReading: GetCurrentlyReading,
     private val getAlreadyRead: GetAlreadyRead,
 
-) :
+    ) :
     KoinComponent {
 
     private val viewModelScope = CoroutineScope(Dispatchers.IO)
@@ -32,6 +32,11 @@ class HomeViewModel constructor(
         started = SharingStarted.WhileSubscribed(),
         initialValue = HomeScreenState(),
     )
+
+    init {
+        onEvent(HomeScreenEvents.LoadCurrentlyReading)
+        onEvent(HomeScreenEvents.LoadAlreadyRead)
+    }
 
     fun onEvent(event: HomeScreenEvents) {
         when (event) {
