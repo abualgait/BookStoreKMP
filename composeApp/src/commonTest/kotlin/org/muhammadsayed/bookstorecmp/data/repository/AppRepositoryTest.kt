@@ -43,7 +43,7 @@ class AppRepositoryTest {
             }
         }
 
-        val sut = AppRepositoryImpl(fakeDao, HttpClientFactory.makeClient(mockEngine, false))
+        val sut = AppRepositoryImpl(fakeDao, HttpClientFactory.makeClientTest(mockEngine, false))
 
         val result = sut.getCurrentlyReadingBooks()
 
@@ -97,7 +97,7 @@ class AppRepositoryTest {
             }
         }
 
-        val sut = AppRepositoryImpl(fakeDao, HttpClientFactory.makeClient(mockEngine, false))
+        val sut = AppRepositoryImpl(fakeDao, HttpClientFactory.makeClientTest(mockEngine, false))
 
         val result = sut.getAlreadyReadBooks()
 
@@ -152,7 +152,7 @@ class AppRepositoryTest {
             }
         }
 
-        val sut = AppRepositoryImpl(fakeDao, HttpClientFactory.makeClient(mockEngine, false))
+        val sut = AppRepositoryImpl(fakeDao, HttpClientFactory.makeClientTest(mockEngine, false))
 
         val result = sut.getBookDetails("KEY")
 
@@ -193,7 +193,7 @@ class AppRepositoryTest {
             author = "John Doe"
         )
         fakeDao.saveBook(book)
-        val sut = AppRepositoryImpl(fakeDao, HttpClientFactory.makeClient(mockEngine, false))
+        val sut = AppRepositoryImpl(fakeDao, HttpClientFactory.makeClientTest(mockEngine, false))
 
         sut.addBook(book)
         val result = sut.getBooks()
@@ -222,7 +222,7 @@ class AppRepositoryTest {
         )
         fakeDao.saveBook(book)
 
-        val sut = AppRepositoryImpl(fakeDao, HttpClientFactory.makeClient(mockEngine, false))
+        val sut = AppRepositoryImpl(fakeDao, HttpClientFactory.makeClientTest(mockEngine, false))
 
         sut.deleteBook(book)
         val result = sut.getBooks()
