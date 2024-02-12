@@ -1,15 +1,10 @@
- import SwiftUI
+import SwiftUI
 
 @main
 struct iOSApp: App {
-
-    init(){
-        KoinApplication.start()
-    }
-
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+	var body: some Scene {
+		WindowGroup {
+			ContentView()
+		}
+	}
 }
