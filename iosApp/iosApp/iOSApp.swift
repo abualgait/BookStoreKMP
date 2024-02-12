@@ -1,7 +1,7 @@
  import SwiftUI
 
 @main
-struct NotflixApp: App {
+struct iOSApp: App {
 
     init(){
         KoinApplication.start()
