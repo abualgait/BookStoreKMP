@@ -19,3 +19,5 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
+include(":wearapp")
+include(":androidapp")

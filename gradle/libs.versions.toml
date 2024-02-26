@@ -10,7 +10,7 @@ androidx-core-ktx = "1.12.0"
 androidx-espresso-core = "3.5.1"
 androidx-material = "1.11.0"
 androidx-test-junit = "1.1.5"
-compose = "1.5.4"
+compose = "1.6.2"
 compose-compiler = "1.5.8"
 compose-plugin = "1.6.0-alpha01"
 junit = "4.13.2"
@@ -60,6 +60,13 @@ turbine = "0.12.3"
 kotest = "5.5.4"
 composeMultiplatform = "1.5.11"
 foundationAndroid = "1.5.4"
+play-services-wearable = "18.1.0"
+compose-bom = "2023.08.00"
+compose-material = "1.1.2"
+compose-material3 = "1.0.0-alpha18"
+compose-foundation = "1.1.2"
+core-splashscreen = "1.0.1"
+lifecycle-runtime-ktx = "2.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
@@ -144,6 +151,17 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-junit" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso-core" }
 androidx-foundation-android = { group = "androidx.compose.foundation", name = "foundation-android", version.ref = "foundationAndroid" }
+play-services-wearable = { group = "com.google.android.gms", name = "play-services-wearable", version.ref = "play-services-wearable" }
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-wear-compose-compose-material = { group = "androidx.wear.compose", name = "compose-material", version.ref = "compose-material" }
+androidx-wear-compose-compose-material3 = { group = "androidx.wear.compose", name = "compose-material3", version.ref = "compose-material3" }
+androidx-wear-compose-compose-foundation = { group = "androidx.wear.compose", name = "compose-foundation", version.ref = "compose-foundation" }
+core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "core-splashscreen" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
+ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+material3 = { group = "androidx.compose.material3", name = "material3" }
 
 
 
