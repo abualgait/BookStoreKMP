@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 include(":composeApp")
 include(":wearapp")
 include(":androidapp")
+include(":tv")

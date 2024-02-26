@@ -56,7 +56,7 @@ fun HomeScreen(
 ) {
     val state by viewModel.state.collectAsState()
 
-    Scaffold {
+    Scaffold(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
         if (state.error != null) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(text = "An error has been occurred")

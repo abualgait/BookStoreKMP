@@ -67,6 +67,8 @@ compose-material3 = "1.0.0-alpha18"
 compose-foundation = "1.1.2"
 core-splashscreen = "1.0.1"
 lifecycle-runtime-ktx = "2.7.0"
+tv-foundation = "1.0.0-alpha07"
+tv-material = "1.0.0-alpha07"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
@@ -162,6 +164,8 @@ core-splashscreen = { group = "androidx.core", name = "core-splashscreen", versi
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
+tv-foundation = { group = "androidx.tv", name = "tv-foundation", version.ref = "tv-foundation" }
+tv-material = { group = "androidx.tv", name = "tv-material", version.ref = "tv-material" }
 
 
 
