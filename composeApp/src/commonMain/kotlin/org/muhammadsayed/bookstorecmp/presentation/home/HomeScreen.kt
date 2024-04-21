@@ -43,12 +43,15 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import cafe.adriel.lyricist.LocalStrings
+import bookstorecmp.composeapp.generated.resources.Res
 import com.seiko.imageloader.rememberImagePainter
 import moe.tlaster.precompose.navigation.Navigator
+import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.muhammadsayed.bookstorecmp.domain.model.BookDomainModel
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun HomeScreen(
     navigator: Navigator,
@@ -72,7 +75,7 @@ fun HomeScreen(
                         modifier = Modifier.fillMaxWidth().padding(16.dp)
                     ) {
                         Text(
-                            text = LocalStrings.current.happyReading,
+                            text = stringResource(Res.string.happy_reading),
                             style = TextStyle(
                                 fontSize = 16.sp,
                                 lineHeight = 32.sp,
@@ -106,7 +109,7 @@ fun HomeScreen(
                     item {
                         Text(
                             modifier = Modifier.padding(16.dp),
-                            text = LocalStrings.current.bestDeals,
+                            text = stringResource(Res.string.best_deals),
                             fontWeight = FontWeight.Bold,
                             style = MaterialTheme.typography.titleLarge
                         )
@@ -129,7 +132,7 @@ fun HomeScreen(
                         modifier = Modifier.fillMaxWidth().padding(16.dp)
                     ) {
                         Text(
-                            text = LocalStrings.current.topBooks,
+                            text = stringResource(Res.string.top_books),
                             style = TextStyle(
                                 fontSize = 20.sp,
                                 lineHeight = 20.sp,
@@ -140,7 +143,7 @@ fun HomeScreen(
                             )
                         )
                         Text(
-                            text = LocalStrings.current.seeMore,
+                            text = stringResource(Res.string.see_more),
                             style = TextStyle(
                                 fontSize = 14.sp,
                                 lineHeight = 20.sp,

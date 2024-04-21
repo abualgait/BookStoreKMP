@@ -60,7 +60,7 @@ kotlin {
             implementation(libs.imageLoader)
             api(libs.preCompose)
             api(libs.preCompose.viewmodel)
-            api(libs.lyricist)
+
             implementation(libs.sqlDelight.coroutine)
             implementation(libs.multiplatform.settings)
         }
@@ -88,6 +88,7 @@ kotlin {
         }
 
     }
+    task("testClasses")
 }
 
 android {
@@ -135,15 +136,4 @@ sqldelight {
             srcDirs.setFrom("src/commonMain/kotlin")
         }
     }
-}
-dependencies { add("kspCommonMainMetadata", libs.lyricist.processor) }
-
-tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().all {
-    if (name != "kspCommonMainKotlinMetadata") {
-        dependsOn("kspCommonMainKotlinMetadata")
-    }
-}
-
-kotlin.sourceSets.commonMain {
-    kotlin.srcDir("build/generated/ksp/metadata/commonMain/kotlin")
 }

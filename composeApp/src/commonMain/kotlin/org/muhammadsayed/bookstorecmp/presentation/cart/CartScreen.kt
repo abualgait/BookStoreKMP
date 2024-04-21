@@ -36,14 +36,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import cafe.adriel.lyricist.LocalStrings
+import bookstorecmp.composeapp.generated.resources.Res
 import com.seiko.imageloader.rememberImagePainter
 import moe.tlaster.precompose.navigation.Navigator
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.muhammadsayed.bookstorecmp.domain.model.BookDomainModel
 
+@OptIn(ExperimentalResourceApi::class)
 @Composable
 fun CartScreen(
     navigator: Navigator,
@@ -76,7 +79,7 @@ fun CartScreen(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        text = LocalStrings.current.cart,
+                        text = stringResource(Res.string.cart),
                         style = TextStyle(
                             fontSize = 16.sp,
                             lineHeight = 32.sp,
@@ -100,7 +103,7 @@ fun CartScreen(
                 item {
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(
-                        text = LocalStrings.current.orderSummary,
+                        text = stringResource(Res.string.order_summary),
                         style = TextStyle(
                             fontSize = 20.sp,
 
@@ -114,7 +117,7 @@ fun CartScreen(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = LocalStrings.current.seeMore,
+                            text = stringResource(Res.string.see_more),
                             style = TextStyle(
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight(400),
@@ -136,7 +139,7 @@ fun CartScreen(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = LocalStrings.current.shipping,
+                            text = stringResource(Res.string.shipping),
                             style = TextStyle(
                                 fontSize = 16.sp,
 
@@ -167,7 +170,7 @@ fun CartScreen(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = LocalStrings.current.total,
+                            text = stringResource(Res.string.total),
                             style = TextStyle(
                                 fontSize = 20.sp,
                                 fontWeight = FontWeight(400),
@@ -197,7 +200,7 @@ fun CartScreen(
                             }, contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = LocalStrings.current.proceedToCheckout,
+                            text = stringResource(Res.string.proceed_to_checkout),
                             style = TextStyle(
                                 fontSize = 14.sp,
                                 lineHeight = 22.sp,
@@ -291,7 +294,7 @@ fun HorizontalPagerItem(
                     ) {
                         Row {
                             Image(
-                                painter = painterResource("subtract-box.png"),
+                                painter = painterResource(Res.drawable.subtract_box),
                                 contentDescription = "Subtract Qty",
                                 modifier = Modifier.size(25.dp).clickable {
                                     if (item.qty!! > 1L) {
@@ -312,7 +315,7 @@ fun HorizontalPagerItem(
                             )
 
                             Image(
-                                painter = painterResource("add-box.png"),
+                                painter = painterResource(Res.drawable.add_box),
                                 contentDescription = "Add Qty",
                                 modifier = Modifier.size(25.dp).clickable {
                                     if (item.qty!! < 10L) {

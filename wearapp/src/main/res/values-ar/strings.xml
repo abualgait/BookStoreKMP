@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">مكتبة - KMP</string>
+    <string name="happy_reading">قراءة سعيدة!</string>
+    <string name="get_started">اقرأ</string>
+    <string name="get_started_desc">اقرأ المزيد وقلل من التوتر من خلال تطبيق تسوق الكتب عبر الإنترنت. تسوق من أي مكان تتواجد فيه واكتشف العناوين التي تحبها. قراءة سعيدة!</string>
+    <string name="best_deals">أفضل العروض</string>
+    <string name="top_books">أفضل الكتب</string>
+    <string name="see_more">المزيد</string>
+    <string name="home">الرئيسية</string>
+    <string name="categories">الأقسام</string>
+    <string name="cart">العربة</string>
+    <string name="account">الحساب</string>
+    <string name="order_summary">ملخص الطلب</string>
+    <string name="subtotal">المجموع الفرعي</string>
+    <string name="shipping">الشحن</string>
+    <string name="total">الإجمالي</string>
+    <string name="proceed_to_checkout">الانتقال للدفع</string>
+</resources>

@@ -32,6 +32,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -41,7 +42,6 @@ import androidx.wear.compose.material3.Card
 import androidx.wear.compose.material3.CardDefaults
 import androidx.wear.compose.material3.MaterialTheme
 import androidx.wear.compose.material3.Text
-import cafe.adriel.lyricist.LocalStrings
 import com.muhammadsayed.wearapp.R
 import com.seiko.imageloader.rememberImagePainter
 import org.koin.compose.koinInject
@@ -112,7 +112,7 @@ fun WearAppCompose(viewModel: HomeViewModel = koinInject()) {
             item {
                 Text(
                     modifier = Modifier.padding(16.dp),
-                    text = LocalStrings.current.bestDeals,
+                    text = stringResource(id = R.string.best_deals),
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.titleLarge
                 )

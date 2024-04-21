@@ -26,10 +26,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import cafe.adriel.lyricist.LocalStrings
+import bookstorecmp.composeapp.generated.resources.Res
 import moe.tlaster.precompose.navigation.Navigator
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.muhammadsayed.bookstorecmp.presentation.navigation.NavigationItem
 import org.muhammadsayed.bookstorecmp.presentation.settings.SettingsViewModel
@@ -51,20 +52,22 @@ fun GetStartedScreen(
                 contentAlignment = Alignment.BottomCenter, modifier = Modifier.weight(0.6f)
             ) {
                 Image(
-                    painter = painterResource("get-started.png"),
+                    painter = painterResource(Res.drawable.get_started),
                     null,
                     modifier = Modifier.fillMaxSize(),
                     contentScale = ContentScale.FillBounds
                 )
 
                 Image(
-                    painter = painterResource("logo.png"), null, modifier = Modifier.size(136.dp)
+                    painter = painterResource(Res.drawable.logo),
+                    null,
+                    modifier = Modifier.size(136.dp)
                 )
 
             }
             Column(modifier = Modifier.weight(0.4f).padding(16.dp)) {
                 Text(
-                    text = LocalStrings.current.getStartedDesc, style = TextStyle(
+                    text = stringResource(Res.string.get_started_desc), style = TextStyle(
                         fontSize = 16.sp,
                         lineHeight = 24.5.sp,
                         fontWeight = FontWeight(400),
@@ -83,7 +86,7 @@ fun GetStartedScreen(
                         }, contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = LocalStrings.current.getStarted, style = TextStyle(
+                        text = stringResource(Res.string.get_started), style = TextStyle(
                             fontSize = 14.sp,
                             lineHeight = 22.sp,
                             fontWeight = FontWeight(600),
