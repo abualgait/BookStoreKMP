@@ -1,4 +1,5 @@
 import org.jetbrains.compose.ExperimentalComposeLibrary
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -18,6 +19,8 @@ kotlin {
         }
     }
 
+    jvm("desktop")
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -30,7 +33,7 @@ kotlin {
     }
 
     sourceSets {
-
+        val desktopMain by getting
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
@@ -69,6 +72,12 @@ kotlin {
             implementation(libs.ktor.darwin)
             implementation(libs.sqlDelight.native)
         }
+        desktopMain.dependencies {
+            implementation(compose.desktop.currentOs)
+            implementation(libs.ktor.java)
+            implementation(libs.sqlDelight.jvm)
+        }
+
 
         commonTest {
             dependencies {
@@ -134,6 +143,18 @@ sqldelight {
         create("AppDatabase") {
             packageName.set("org.muhammadsayed.bookstorecmp.shared.data.cache.sqldelight")
             srcDirs.setFrom("src/commonMain/kotlin")
+        }
+    }
+}
+
+compose.desktop {
+    application {
+        mainClass = "MainKt"
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "org.muhammadsayed.bookstorecmp"
+            packageVersion = "1.0.0"
         }
     }
 }
