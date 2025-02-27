@@ -33,14 +33,12 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.muhammadsayed.bookstorecmp.presentation.navigation.NavigationItem
-import org.muhammadsayed.bookstorecmp.presentation.settings.SettingsViewModel
 import org.muhammadsayed.bookstorecmp.strings.Locales
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun GetStartedScreen(
     navigator: Navigator,
-    viewModel: SettingsViewModel = koinInject(),
     onLocalChange: (String) -> Unit
 ) {
 
@@ -81,8 +79,7 @@ fun GetStartedScreen(
                         .background(
                             color = Color(0xFF121212), shape = RoundedCornerShape(size = 5.dp)
                         ).clickable {
-                            viewModel.savePreferenceGetStarted()
-                            navigator.navigate(NavigationItem.Home.route)
+                            navigator.navigate(NavigationItem.Cart.route)
                         }, contentAlignment = Alignment.Center
                 ) {
                     Text(
@@ -96,52 +93,6 @@ fun GetStartedScreen(
                     )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
-                Row(
-                    modifier = Modifier.padding(
-                        horizontal = 16.dp
-                    )
-                ) {
-                    Box(
-                        modifier = Modifier.weight(1f)
-                            .height(56.dp)
-                            .background(
-                                color = Color(0xFF121212), shape = RoundedCornerShape(size = 5.dp)
-                            ).clickable {
-                                onLocalChange(Locales.EN)
-                            }, contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "English", style = TextStyle(
-                                fontSize = 14.sp,
-                                lineHeight = 22.sp,
-                                fontWeight = FontWeight(600),
-                                color = Color(0xFFF2F2F2),
-                                textAlign = TextAlign.Center,
-                            )
-                        )
-                    }
-                    Spacer(modifier = Modifier.width(10.dp))
-                    Box(
-                        modifier = Modifier.weight(1f)
-                            .height(56.dp)
-                            .background(
-                                color = Color(0xFF121212), shape = RoundedCornerShape(size = 5.dp)
-                            ).clickable {
-                                onLocalChange(Locales.AR)
-                            }, contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "العربية", style = TextStyle(
-                                fontSize = 14.sp,
-                                lineHeight = 22.sp,
-                                fontWeight = FontWeight(600),
-                                color = Color(0xFFF2F2F2),
-                                textAlign = TextAlign.Center,
-                            )
-                        )
-                    }
-                }
                 Spacer(modifier = Modifier.height(16.dp))
             }
 

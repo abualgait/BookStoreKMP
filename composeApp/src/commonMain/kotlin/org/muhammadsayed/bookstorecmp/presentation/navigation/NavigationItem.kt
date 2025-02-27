@@ -12,11 +12,6 @@ sealed class NavigationItem(
     val title: String,
     val icon: ImageVector?
 ) {
-
-    data object Home : NavigationItem("/home", "Home", Icons.Rounded.Home)
-    data object Categories : NavigationItem("/categories", "Categories", Icons.Filled.List)
-    data object Cart : NavigationItem("/cart", "Cart", Icons.Rounded.ShoppingCart)
-    data object Account : NavigationItem("/account", "Account", Icons.Rounded.AccountBox)
-    data object Details : NavigationItem("/details/{id}", "Details", null)
     data object GetStarted : NavigationItem("/getStarted", "GetStarted", null)
+    data object Cart : NavigationItem("/cart", "Cart", Icons.Rounded.ShoppingCart)
 }

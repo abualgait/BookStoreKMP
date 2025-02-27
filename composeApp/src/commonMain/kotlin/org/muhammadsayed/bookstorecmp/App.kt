@@ -23,26 +23,7 @@ fun App() {
 
             val navigator = rememberNavigator()
 
-            val topLevelDestinations = listOf(
-                NavigationItem.Home,
-                NavigationItem.Categories,
-                NavigationItem.Cart,
-                NavigationItem.Account
-            )
-
-            val isTopLevelDestination =
-                navigator.currentEntry.collectAsState(null).value?.route?.route in topLevelDestinations.map { it.route }
-
-            Scaffold(
-                bottomBar = {
-                    if (isTopLevelDestination) {
-                        BottomNavBar(
-                            bottomNavItems = topLevelDestinations,
-                            navigator = navigator
-                        )
-                    }
-                }
-            ) { paddingValues ->
+            Scaffold() { paddingValues ->
 
                 BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
                     Row(modifier = Modifier.fillMaxSize()) {

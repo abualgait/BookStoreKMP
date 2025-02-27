@@ -18,9 +18,6 @@ import org.muhammadsayed.bookstorecmp.domain.use_case.GetBookDetails
 import org.muhammadsayed.bookstorecmp.domain.use_case.GetCartItems
 import org.muhammadsayed.bookstorecmp.domain.use_case.GetCurrentlyReading
 import org.muhammadsayed.bookstorecmp.presentation.cart.CartViewModel
-import org.muhammadsayed.bookstorecmp.presentation.details.DetailsViewModel
-import org.muhammadsayed.bookstorecmp.presentation.home.HomeViewModel
-import org.muhammadsayed.bookstorecmp.presentation.settings.SettingsViewModel
 
 @OptIn(ExperimentalSettingsApi::class)
 fun commonModule(enableNetworkLogs: Boolean) = module {
@@ -42,11 +39,7 @@ fun commonModule(enableNetworkLogs: Boolean) = module {
     factory<DeleteBook> { DeleteBook(get()) }
     single<SettingsRepository> { SettingsRepositoryImpl(observableSettings = get()) }
 
-    singleOf(::HomeViewModel)
-    singleOf(::DetailsViewModel)
     singleOf(::CartViewModel)
-    singleOf(::SettingsViewModel)
-
 }
 
 expect fun platformModule(): Module
