@@ -7,7 +7,7 @@ import org.koin.dsl.KoinAppDeclaration
 fun initKoin(enableNetworkLogs: Boolean = true, appDeclaration: KoinAppDeclaration = {}) =
     startKoin {
         appDeclaration()
-        modules(platformModule(), commonModule(enableNetworkLogs = enableNetworkLogs))
+        modules(commonModule(enableNetworkLogs = enableNetworkLogs))
     }
 
 fun KoinApplication.Companion.start(): KoinApplication = initKoin { }

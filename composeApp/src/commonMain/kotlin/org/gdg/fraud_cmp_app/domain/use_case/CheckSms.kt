@@ -1,14 +1,15 @@
 package org.gdg.fraud_cmp_app.domain.use_case
 
-import org.gdg.fraud_cmp_app.domain.model.SmsDomainModel
+import kotlinx.coroutines.flow.Flow
+import org.gdg.fraud_cmp_app.domain.DataState
+import org.gdg.fraud_cmp_app.domain.model.SmsSearchDomainModel
 import org.gdg.fraud_cmp_app.domain.repository.AppRepository
 
 class CheckSms(
-    private val appRepository: AppRepository
+    private val appRepository: AppRepository,
 ) {
-
-    suspend fun check(smsDomainModel: SmsDomainModel):Boolean{
-        return appRepository.checkSms(smsDomainModel)
+    suspend operator fun invoke(smsMessage: String): Flow<DataState<SmsSearchDomainModel>> {
+        return appRepository.checkSms(smsMessage = smsMessage)
     }
 
 }

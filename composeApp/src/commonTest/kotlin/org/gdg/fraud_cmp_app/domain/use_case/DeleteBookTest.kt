@@ -2,7 +2,6 @@ package org.gdg.fraud_cmp_app.domain.use_case
 
 import app.cash.turbine.test
 import kotlinx.coroutines.test.runTest
-import org.gdg.fraud_cmp_app.domain.model.SmsDomainModel
 import org.gdg.fraud_cmp_app.testdoubles.FakeAppRepository
 import org.gdg.fraud_cmp_app.testdoubles.FakeDao
 import kotlin.test.Test

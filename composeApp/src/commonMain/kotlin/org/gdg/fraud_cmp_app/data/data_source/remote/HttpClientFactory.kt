@@ -25,7 +25,7 @@ object HttpClientFactory {
 
         return HttpClient {
             install(DefaultRequest) {
-                url("")
+                url("http://10.10.8.20:8080/api/")
                 headers {
                     appendIfNameAbsent(
                         HttpHeaders.ContentType,
@@ -63,48 +63,5 @@ object HttpClientFactory {
         }
     }
 
-    fun makeClientTest(
-        httpClientEngine: HttpClientEngine,
-        enableNetworkLogs: Boolean
-    ): HttpClient {
 
-        return HttpClient(httpClientEngine) {
-            install(DefaultRequest) {
-                url("https://openlibrary.org")
-                headers {
-                    appendIfNameAbsent(
-                        HttpHeaders.ContentType,
-                        ContentType.Application.Json.toString()
-                    )
-                }
-            }
-
-            install(HttpRequestRetry) {
-                retryOnServerErrors(maxRetries = 2)
-            }
-
-            install(ContentNegotiation) {
-                val json = Json {
-                    ignoreUnknownKeys = true
-                    isLenient = true
-                    prettyPrint = true
-                }
-                json(json = json)
-                register(ContentType.Text.Plain, KotlinxSerializationConverter(json))
-            }
-
-            if (enableNetworkLogs) {
-                install(Logging) {
-                    level = LogLevel.ALL
-                    logger = object : Logger {
-                        override fun log(message: String) {
-                            Napier.i(tag = "Http Client", message = message)
-                        }
-                    }
-                }.also {
-                    Napier.base(DebugAntilog())
-                }
-            }
-        }
-    }
 }

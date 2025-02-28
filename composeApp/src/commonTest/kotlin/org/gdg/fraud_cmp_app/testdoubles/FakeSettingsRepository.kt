@@ -4,7 +4,6 @@ import com.russhwolf.settings.ExperimentalSettingsApi
 import com.russhwolf.settings.MapSettings
 import com.russhwolf.settings.coroutines.getBooleanFlow
 import kotlinx.coroutines.flow.Flow
-import org.gdg.fraud_cmp_app.domain.repository.SettingsRepository
 
 class FakeSettingsRepository : SettingsRepository {
     private val settings = MapSettings()

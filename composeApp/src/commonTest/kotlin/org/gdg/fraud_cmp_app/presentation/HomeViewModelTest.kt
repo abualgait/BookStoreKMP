@@ -7,8 +7,6 @@ import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.gdg.fraud_cmp_app.domain.use_case.GetAlreadyRead
-import org.gdg.fraud_cmp_app.domain.use_case.GetCurrentlyReading
 import org.gdg.fraud_cmp_app.presentation.home.HomeScreenEvents
 import org.gdg.fraud_cmp_app.presentation.home.HomeScreenState
 import org.gdg.fraud_cmp_app.presentation.home.HomeViewModel

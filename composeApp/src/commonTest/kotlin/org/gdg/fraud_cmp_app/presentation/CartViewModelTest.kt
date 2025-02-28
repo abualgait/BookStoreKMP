@@ -7,12 +7,9 @@ import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.gdg.fraud_cmp_app.domain.use_case.AddBook
-import org.gdg.fraud_cmp_app.domain.use_case.DeleteBook
-import org.gdg.fraud_cmp_app.domain.use_case.GetCartItems
-import org.gdg.fraud_cmp_app.presentation.cart.CartScreenEvents
-import org.gdg.fraud_cmp_app.presentation.cart.CartScreenState
-import org.gdg.fraud_cmp_app.presentation.cart.CartViewModel
+import org.gdg.fraud_cmp_app.presentation.frauddetection.FraudDetectionScreenEvents
+import org.gdg.fraud_cmp_app.presentation.frauddetection.FraudDetectionScreenState
+import org.gdg.fraud_cmp_app.presentation.frauddetection.FraudDetectionViewModel
 import org.gdg.fraud_cmp_app.testdoubles.FakeAppRepository
 import org.gdg.fraud_cmp_app.testdoubles.FakeDao
 import kotlin.test.AfterTest
@@ -44,11 +41,11 @@ class CartViewModelTest {
 
         val sut = createViewModel()
 
-        sut.onEvent(CartScreenEvents.LoadCartItems)
+        sut.onEvent(FraudDetectionScreenEvents.LoadCartItems)
 
         sut.state.test {
             assertEquals(
-                CartScreenState(smsList = emptyList(), subTotal = 0, total = 0),
+                FraudDetectionScreenState(smsList = emptyList(), subTotal = 0, total = 0),
                 awaitItem()
             )
         }
@@ -77,8 +74,8 @@ class CartViewModelTest {
     }*/
 
 
-    private fun createViewModel(): CartViewModel {
-        return CartViewModel(
+    private fun createViewModel(): FraudDetectionViewModel {
+        return FraudDetectionViewModel(
             getCartItems = getCartItems,
             addBook = addBook,
             deleteBook = deleteBook

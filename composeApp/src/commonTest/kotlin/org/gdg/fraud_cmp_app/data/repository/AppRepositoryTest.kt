@@ -11,11 +11,10 @@ import io.ktor.utils.io.errors.IOException
 import kotlinx.coroutines.test.runTest
 import org.gdg.fraud_cmp_app.data.data_source.remote.HttpClientFactory
 import org.gdg.fraud_cmp_app.data.data_source.remote.response.BookDTO
-import org.gdg.fraud_cmp_app.data.data_source.remote.response.BookDetailsData
+import org.gdg.fraud_cmp_app.data.data_source.remote.response.FraudDetectionDTO
 import org.gdg.fraud_cmp_app.data.data_source.remote.response.WorkDTO
 import org.gdg.fraud_cmp_app.data.mappers.fromDTOList
 import org.gdg.fraud_cmp_app.domain.DataState
-import org.gdg.fraud_cmp_app.domain.model.SmsDomainModel
 import org.gdg.fraud_cmp_app.testdoubles.FakeDao
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -163,9 +162,9 @@ class AppRepositoryTest {
             val success = awaitItem()
             assertEquals(
                 success, DataState.Success(
-                    BookDetailsData(
-                        title = "Sample Title",
-                        subtitle = "Sample Subtitle",
+                    FraudDetectionDTO(
+                        status = "Sample Title",
+                        feedback = "Sample Subtitle",
                         description = "Sample Description",
                         subjects = listOf("Subject1", "Subject2", "Subject3"),
                         key = "sample_key"

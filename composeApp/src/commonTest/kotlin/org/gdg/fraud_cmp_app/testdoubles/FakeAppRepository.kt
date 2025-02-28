@@ -3,18 +3,17 @@ package org.gdg.fraud_cmp_app.testdoubles
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
-import org.gdg.fraud_cmp_app.data.data_source.remote.response.BookDetailsData
+import org.gdg.fraud_cmp_app.data.data_source.remote.response.FraudDetectionDTO
 import org.gdg.fraud_cmp_app.data.mappers.fromEntityList
 import org.gdg.fraud_cmp_app.domain.DataState
-import org.gdg.fraud_cmp_app.domain.model.SmsDomainModel
 import org.gdg.fraud_cmp_app.domain.model.SmsSearchDomainModel
 import org.gdg.fraud_cmp_app.domain.repository.AppRepository
 
 class FakeAppRepository(val fakeDao: FakeDao) : AppRepository {
 
-    val bookDetails = BookDetailsData(
-        title = "Sample Title",
-        subtitle = "Sample Subtitle",
+    val bookDetails = FraudDetectionDTO(
+        status = "Sample Title",
+        feedback = "Sample Subtitle",
         description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         subjects = listOf("Fiction", "Novel", "Literature"),
         key = "sample_key"
@@ -58,7 +57,7 @@ class FakeAppRepository(val fakeDao: FakeDao) : AppRepository {
         return flowOf(DataState.Success(list))
     }
 
-    override suspend fun getBookDetails(key: String): Flow<DataState<BookDetailsData>> {
+    override suspend fun getBookDetails(key: String): Flow<DataState<FraudDetectionDTO>> {
         return flowOf(DataState.Success(bookDetails))
     }
 }

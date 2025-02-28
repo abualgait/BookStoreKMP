@@ -7,8 +7,6 @@ import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.gdg.fraud_cmp_app.domain.use_case.AddBook
-import org.gdg.fraud_cmp_app.domain.use_case.GetBookDetails
 import org.gdg.fraud_cmp_app.testdoubles.FakeAppRepository
 import org.gdg.fraud_cmp_app.testdoubles.FakeDao
 import kotlin.test.AfterTest

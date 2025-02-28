@@ -8,7 +8,6 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import org.gdg.fraud_cmp_app.TestSqlDriverFactory
 import org.gdg.fraud_cmp_app.data.data_source.local.dao.BookDao
-import org.gdg.fraud_cmp_app.domain.model.SmsDomainModel
 import org.gdg.fraud_cmp_app.shared.data.cache.sqldelight.AppDatabase
 
 class FakeDao : BookDao {

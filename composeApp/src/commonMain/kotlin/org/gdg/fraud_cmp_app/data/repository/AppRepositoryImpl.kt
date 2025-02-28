@@ -1,88 +1,40 @@
-//package org.gdg.fraud_cmp_app.data.repository
-//
-//
-//import io.ktor.client.HttpClient
-//import io.ktor.client.call.body
-//import io.ktor.client.request.get
-//import io.ktor.client.request.parameter
-//import kotlinx.coroutines.flow.Flow
-//import kotlinx.coroutines.flow.flow
-//import kotlinx.coroutines.flow.map
-//import org.gdg.fraud_cmp_app.data.data_source.local.dao.BookDao
-//import org.gdg.fraud_cmp_app.data.data_source.remote.response.BookDetailsData
-//import org.gdg.fraud_cmp_app.data.data_source.remote.response.BookSearchResultsResponse
-//import org.gdg.fraud_cmp_app.data.data_source.remote.response.ReadingEnteriesResponse
-//import org.gdg.fraud_cmp_app.data.mappers.fromDTOList
-//import org.gdg.fraud_cmp_app.domain.DataState
-//import org.gdg.fraud_cmp_app.domain.model.BookDomainModel
-//import org.gdg.fraud_cmp_app.domain.model.BookSearchDomainModel
-//import org.gdg.fraud_cmp_app.domain.repository.AppRepository
-//
-//class AppRepositoryImpl(
-//    private val dao: BookDao,
-//    private val httpClient: HttpClient,
-//) : AppRepository {
-//
-//
-//    override suspend fun addBook(book: BookDomainModel) {
-//        dao.saveBook(book)
-//    }
-//
-//    override suspend fun deleteBook(book: BookDomainModel) {
-//        dao.deleteBook(book.id.toInt())
-//    }
-//
-//    override suspend fun getBooks(): Flow<List<BookDomainModel>> {
-//        return dao.getAllBooks().map {
-//            it.fromEntityList()
-//        }
-//    }
-//
-//    override fun getSearchResults(query: String): Flow<DataState<List<BookSearchDomainModel>>> =
-//        flow {
-//            try {
-//                emit(DataState.Loading)
-//                val response = httpClient.get("search.json") {
-//                    parameter("q", query)
-//
-//                }.body<BookSearchResultsResponse>()
-//                emit(DataState.Success(response.docs.fromDTOList()))
-//            } catch (e: Exception) {
-//                emit(DataState.Error(e.message ?: "Unknown error"))
-//            }
-//        }
-//
-//    override suspend fun getCurrentlyReadingBooks(): Flow<DataState<List<BookDomainModel>>> = flow {
-//        try {
-//            emit(DataState.Loading)
-//            val response = httpClient.get("people/mekBot/books/currently-reading.json")
-//                .body<ReadingEnteriesResponse>()
-//            emit(DataState.Success(response.readingLogEntries.fromDTOList()))
-//        } catch (e: Exception) {
-//            emit(DataState.Error(e.message ?: "Unknown error"))
-//        }
-//    }
-//
-//    override suspend fun getAlreadyReadBooks(): Flow<DataState<List<BookDomainModel>>> = flow {
-//        try {
-//            emit(DataState.Loading)
-//            val response = httpClient.get("people/mekBot/books/already-read.json")
-//                .body<ReadingEnteriesResponse>()
-//            emit(DataState.Success(response.readingLogEntries.fromDTOList()))
-//        } catch (e: Exception) {
-//            emit(DataState.Error(e.message ?: "Unknown error"))
-//        }
-//    }
-//
-//    override suspend fun getBookDetails(key: String): Flow<DataState<BookDetailsData>> = flow {
-//        try {
-//            emit(DataState.Loading)
-//            val response = httpClient.get("works/${key}.json")
-//                .body<BookDetailsData>()
-//            emit(DataState.Success(response))
-//        } catch (e: Exception) {
-//            emit(DataState.Error(e.message ?: "Unknown error"))
-//        }
-//    }
-//
-//}
+package org.gdg.fraud_cmp_app.data.repository
+
+
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.get
+import io.ktor.client.request.post
+import io.ktor.client.request.setBody
+import io.ktor.http.ContentType
+import io.ktor.http.contentType
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import org.gdg.fraud_cmp_app.data.data_source.remote.request.FraudDetectionRequest
+import org.gdg.fraud_cmp_app.data.data_source.remote.response.FraudDetectionDTO
+import org.gdg.fraud_cmp_app.data.mappers.mapToDomainModel
+import org.gdg.fraud_cmp_app.domain.DataState
+import org.gdg.fraud_cmp_app.domain.model.SmsSearchDomainModel
+import org.gdg.fraud_cmp_app.domain.repository.AppRepository
+
+class AppRepositoryImpl(
+    private val httpClient: HttpClient,
+) : AppRepository {
+
+    override suspend fun checkSms(smsMessage: String): Flow<DataState<SmsSearchDomainModel>> =
+        flow {
+            try {
+                emit(DataState.Loading)
+                val response = httpClient.post("send-massage") {
+                    contentType(ContentType.Application.Json) // Set JSON Content-Type
+                    setBody(FraudDetectionRequest(message = smsMessage)) // Set body correctly
+                }
+                    .body<FraudDetectionDTO>().mapToDomainModel()
+                emit(DataState.Success(response))
+            } catch (e: Exception) {
+                emit(DataState.Error(e.message ?: "Unknown error"))
+            }
+        }
+}

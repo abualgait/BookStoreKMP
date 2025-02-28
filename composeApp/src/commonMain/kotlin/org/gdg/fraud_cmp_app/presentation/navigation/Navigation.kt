@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.Navigator
 import org.gdg.fraud_cmp_app.presentation.getstarted.GetStartedScreen
-import org.gdg.fraud_cmp_app.presentation.cart.CartScreen
+import org.gdg.fraud_cmp_app.presentation.frauddetection.CartScreen
 
 @Composable
 fun Navigation(

@@ -138,6 +138,7 @@ dependencies {
     implementation(libs.androidx.foundation.android)
     implementation(libs.androidx.ui.tooling.preview.android)
     implementation(libs.androidx.glance.preview)
+    implementation(libs.androidx.ui.android)
 }
 
 sqldelight {
