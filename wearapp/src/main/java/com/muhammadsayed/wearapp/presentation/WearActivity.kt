@@ -45,9 +45,9 @@ import androidx.wear.compose.material3.Text
 import com.muhammadsayed.wearapp.R
 import com.seiko.imageloader.rememberImagePainter
 import org.koin.compose.koinInject
-import org.muhammadsayed.bookstorecmp.domain.model.BookDomainModel
-import org.muhammadsayed.bookstorecmp.presentation.home.HomeViewModel
-import org.muhammadsayed.bookstorecmp.theme.AppTheme
+import org.gdg.fraud_cmp_app.domain.model.SmsDomainModel
+import org.gdg.fraud_cmp_app.presentation.home.HomeViewModel
+import org.gdg.fraud_cmp_app.theme.AppTheme
 
 
 class WearActivity : ComponentActivity() {
@@ -134,7 +134,7 @@ fun WearAppCompose(viewModel: HomeViewModel = koinInject()) {
 @Composable
 fun BookItem(
     modifier: Modifier = Modifier,
-    item: BookDomainModel, onClick: (BookDomainModel) -> Unit
+    item: SmsDomainModel, onClick: (SmsDomainModel) -> Unit
 ) {
 
     Card(

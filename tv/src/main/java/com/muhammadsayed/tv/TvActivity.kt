@@ -6,10 +6,10 @@ import androidx.activity.compose.setContent
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.logger.Level
-import org.muhammadsayed.bookstorecmp.App
-import org.muhammadsayed.bookstorecmp.di.initKoin
-import org.muhammadsayed.bookstorecmp.theme.AppTheme
-import org.muhammadsayed.bookstorecmp.utils.ContextUtils
+import org.gdg.fraud_cmp_app.App
+import org.gdg.fraud_cmp_app.di.initKoin
+import org.gdg.fraud_cmp_app.theme.AppTheme
+import org.gdg.fraud_cmp_app.utils.ContextUtils
 
 class TvActivity : ComponentActivity() {
 

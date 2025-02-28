@@ -4,7 +4,7 @@ import android.app.Application
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.logger.Level
-import org.muhammadsayed.bookstorecmp.di.initKoin
+import org.gdg.fraud_cmp_app.di.initKoin
 
 class WearApp : Application() {
     override fun onCreate() {

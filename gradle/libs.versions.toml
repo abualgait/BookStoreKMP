@@ -68,6 +68,8 @@ core-splashscreen = "1.0.1"
 lifecycle-runtime-ktx = "2.7.0"
 tv-foundation = "1.0.0-alpha07"
 tv-material = "1.0.0-alpha07"
+uiToolingPreviewAndroid = "1.7.8"
+glancePreview = "1.1.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
@@ -162,6 +164,8 @@ ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
 tv-foundation = { group = "androidx.tv", name = "tv-foundation", version.ref = "tv-foundation" }
 tv-material = { group = "androidx.tv", name = "tv-material", version.ref = "tv-material" }
+androidx-ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "uiToolingPreviewAndroid" }
+androidx-glance-preview = { group = "androidx.glance", name = "glance-preview", version.ref = "glancePreview" }
 
 
 
